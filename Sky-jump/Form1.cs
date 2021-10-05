@@ -237,14 +237,14 @@ namespace Sky_jump
             {
                 player.Left += 6;
             }
-            for (int i = 0; i < plat.Length; i++)
+            foreach (Control i in Controls)
             {
-                if (plat[i].Right > player.Left && plat[i].Left < player.Right && player.Bottom < plat[i].Top && player.Bottom + 1 > plat[i].Top + speed)
+                if (i.Right > player.Left && i.Left < player.Right && player.Bottom < i.Top && player.Bottom + 1 > i.Top + speed)
                 {
-                    player.Top = plat[i].Top - player.Height + 1;
+                    player.Top = i.Top - player.Height + 1;
                     anim = true;
                     speed = 12;
-                    if (plat[i].Tag.ToString() == "rubber")
+                    if (i.Tag.ToString() == "rubber")
                     {
                         speed = 26;
                     }
@@ -444,7 +444,7 @@ namespace Sky_jump
                         if (plat[i].Tag.ToString() == "weak")
                         {
                             Controls.Remove(plat[i]);
-                            plat[i].Left = -200;
+                            plat[i].Left = -2000;
                             plat[i].Tag = "weak.removed";
                         }
 
